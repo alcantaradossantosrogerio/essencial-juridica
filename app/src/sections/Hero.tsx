@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import { heroConfig, extraConfig } from '../config';
+import { heroConfig } from '../config';
+import { usePrevidenciarioModal } from '../context/PrevidenciarioModalContext';
 
 export default function Hero() {
+  const { openModal } = usePrevidenciarioModal();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -84,19 +86,17 @@ export default function Hero() {
         {/* Hero CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center w-full sm:w-auto">
           <button
-            onClick={() => document.querySelector('#triagem-previdenciaria')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={openModal}
             className="bg-gradient-to-r from-[#C8AA82] to-[#e4ccaa] text-black font-bold uppercase tracking-wider text-xs px-7 py-4 rounded-sm hover:from-white hover:to-white hover:scale-[1.03] transition-all duration-300 shadow-xl text-center w-full sm:w-auto sm:min-w-[220px] flex items-center justify-center gap-2 cursor-pointer"
           >
-            <span>⚖️ Triagem Previdenciária IA</span>
+            <span>Falar no WhatsApp (Com Triagem IA)</span>
           </button>
-          <a
-            href={extraConfig.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="border border-[#C8AA82]/40 text-neutral-200 hover:border-[#C8AA82] hover:text-[#C8AA82] hover:bg-[#C8AA82]/5 font-semibold uppercase tracking-wider text-xs px-6 py-4 rounded-sm transition-all text-center w-full sm:w-auto sm:min-w-[180px]"
+          <button
+            onClick={() => document.querySelector('#curriculum')?.scrollIntoView({ behavior: 'smooth' })}
+            className="border border-[#C8AA82]/40 text-neutral-200 hover:border-[#C8AA82] hover:text-[#C8AA82] hover:bg-[#C8AA82]/5 font-semibold uppercase tracking-wider text-xs px-6 py-4 rounded-sm transition-all text-center w-full sm:w-auto sm:min-w-[180px] cursor-pointer"
           >
-            {heroConfig.ctaText}
-          </a>
+            Conhecer Atuação
+          </button>
         </div>
       </div>
     </section>

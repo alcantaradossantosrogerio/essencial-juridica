@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Phone, Mail, MapPin, Instagram, Facebook, Linkedin, Youtube, Menu, X } from 'lucide-react';
 import { siteConfig, navigationConfig } from '../config';
+import { usePrevidenciarioModal } from '../context/PrevidenciarioModalContext';
 
 export default function Navigation() {
+  const { openModal } = usePrevidenciarioModal();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [imgError, setImgError] = useState(false);
@@ -221,13 +223,12 @@ export default function Navigation() {
           {/* Desktop CTA Button */}
           <div className="hidden md:flex items-center gap-4">
             {navigationConfig.ctaText && (
-              <a
-                href="#contact"
-                onClick={(e) => handleLinkClick(e, '#contact')}
-                className="inline-flex items-center justify-center border border-[#C8AA82] text-[#C8AA82] hover:bg-[#C8AA82] hover:text-black px-5 py-2.5 uppercase tracking-wider text-xs font-semibold rounded-sm transition-all duration-300 shadow-[0_0_15px_rgba(200,170,130,0.1)] hover:shadow-[0_0_20px_rgba(200,170,130,0.3)] hover:scale-[1.02]"
+              <button
+                onClick={openModal}
+                className="inline-flex items-center justify-center border border-[#C8AA82] text-[#C8AA82] hover:bg-[#C8AA82] hover:text-black px-5 py-2.5 uppercase tracking-wider text-xs font-semibold rounded-sm transition-all duration-300 shadow-[0_0_15px_rgba(200,170,130,0.1)] hover:shadow-[0_0_20px_rgba(200,170,130,0.3)] hover:scale-[1.02] cursor-pointer"
               >
                 {navigationConfig.ctaText}
-              </a>
+              </button>
             )}
           </div>
 
@@ -351,13 +352,15 @@ export default function Navigation() {
 
           {/* Mobile CTA */}
           {navigationConfig.ctaText && (
-            <a
-              href="#contact"
-              onClick={(e) => handleLinkClick(e, '#contact')}
-              className="w-full bg-[#C8AA82] hover:bg-white text-black font-semibold text-xs uppercase tracking-wider py-3.5 rounded-sm text-center transition-colors duration-300 shadow-md mt-4"
+            <button
+              onClick={() => {
+                setMenuOpen(false);
+                openModal();
+              }}
+              className="w-full bg-[#C8AA82] hover:bg-white text-black font-semibold text-xs uppercase tracking-wider py-3.5 rounded-sm text-center transition-colors duration-300 shadow-md mt-4 cursor-pointer"
             >
               {navigationConfig.ctaText}
-            </a>
+            </button>
           )}
         </div>
       </div>

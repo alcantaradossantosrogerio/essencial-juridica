@@ -59,7 +59,6 @@ export interface NavigationConfig {
 export const navigationConfig: NavigationConfig = {
   links: [
     { label: "Início", href: "#hero" },
-    { label: "Triagem Previdenciária IA", href: "#triagem-previdenciaria" },
     { label: "Áreas de Atuação", href: "#curriculum" },
     { label: "O Método", href: "#method" },
     { label: "O Escritório", href: "#cinematic" },

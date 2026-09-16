@@ -1,13 +1,13 @@
-import { extraConfig } from '../config';
+import { usePrevidenciarioModal } from '../context/PrevidenciarioModalContext';
 
 export default function WhatsAppButton() {
+  const { openModal } = usePrevidenciarioModal();
+
   return (
-    <a
-      href={extraConfig.whatsappUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 flex items-center justify-center bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:bg-[#20ba5a] hover:scale-110 transition-all duration-300 group"
-      aria-label="Fale conosco no WhatsApp"
+    <button
+      onClick={openModal}
+      className="fixed bottom-6 right-6 z-50 flex items-center justify-center bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:bg-[#20ba5a] hover:scale-110 transition-all duration-300 group cursor-pointer"
+      aria-label="Iniciar Atendimento e Triagem no WhatsApp"
       id="whatsapp-floating-button"
     >
       {/* Pulse Animation Overlay */}
@@ -26,8 +26,8 @@ export default function WhatsAppButton() {
 
       {/* Hover Tooltip/Label */}
       <span className="absolute right-16 scale-0 origin-right transition-all duration-300 group-hover:scale-100 bg-neutral-900 text-white text-xs px-3 py-1.5 rounded-lg border border-white/10 whitespace-nowrap shadow-xl">
-        Fale Conosco no WhatsApp
+        Triagem & Atendimento WhatsApp
       </span>
-    </a>
+    </button>
   );
 }
