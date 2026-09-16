@@ -133,6 +133,8 @@ export default function PrevidenciarioModal() {
     };
   }, [isOpen, closeModal]);
 
+  if (!isOpen) return null;
+
   const handleSelectBenefit = (id: string) => {
     const updated = { ...form, benefitType: id };
     setForm(updated);

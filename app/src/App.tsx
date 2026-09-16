@@ -38,7 +38,6 @@ function HomePage() {
       </main>
 
       <WhatsAppButton />
-      <PrevidenciarioModal />
     </div>
   );
 }
