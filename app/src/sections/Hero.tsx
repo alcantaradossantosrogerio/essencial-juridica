@@ -23,26 +23,33 @@ export default function Hero() {
       id="hero"
       className="relative w-full overflow-hidden flex items-center justify-start min-h-screen bg-[#060606] px-6 sm:px-12 md:px-20"
     >
-      {/* Background Image with Cinematic Dark Overlay */}
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-[10s] ease-out"
-        style={{
-          backgroundImage: "url('/images/hero-bg.jpg')",
-          transform: scrolled ? 'scale(1.05)' : 'scale(1)',
-        }}
-      />
+      {/* Background Video (Logo Drawing Animation) */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className={`w-full h-full object-cover object-center transition-transform duration-[10s] ease-out opacity-65 ${
+            scrolled ? 'scale-105' : 'scale-100'
+          }`}
+          poster="/images/hero-bg.jpg"
+        >
+          <source src="/videos/Logo_drawing_animation_20260916134402.mp4" type="video/mp4" />
+        </video>
+      </div>
       
       {/* Gradients to darken background and emphasize text */}
       <div 
         className="absolute inset-0 z-10" 
         style={{
-          background: 'linear-gradient(to right, rgba(6, 6, 6, 0.98) 0%, rgba(6, 6, 6, 0.85) 50%, rgba(6, 6, 6, 0.5) 100%)'
+          background: 'linear-gradient(to right, rgba(6, 6, 6, 0.95) 0%, rgba(6, 6, 6, 0.80) 50%, rgba(6, 6, 6, 0.55) 100%)'
         }}
       />
       <div 
         className="absolute inset-0 z-10" 
         style={{
-          background: 'radial-gradient(circle at 20% 50%, transparent 0%, rgba(6, 6, 6, 0.7) 100%)'
+          background: 'radial-gradient(circle at 30% 50%, transparent 0%, rgba(6, 6, 6, 0.75) 100%)'
         }}
       />
 
