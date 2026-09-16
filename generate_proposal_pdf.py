@@ -71,93 +71,94 @@ def generate_proposal_pdf():
     ACCENT = colors.HexColor("#A88755")       # Ouro Queimado / Âmbar
     ACCENT_LIGHT = colors.HexColor("#F8F5F0") # Fundo Dourado Muito Suave
     DARK = colors.HexColor("#1E1E1E")         # Grafite Escuro
-    MUTED = colors.HexColor("#555555")        # Texto Secundário
     BORDER = colors.HexColor("#D8CEBE")       # Borda Suave
     SUCCESS_BG = colors.HexColor("#EBF5EE")   # Verde suave
     SUCCESS_TXT = colors.HexColor("#1E5E3A")
+    INFO_BG = colors.HexColor("#EEF4F8")      # Azul suave informativo
+    INFO_TXT = colors.HexColor("#144266")
 
     # Typography Styles
     title_style = ParagraphStyle(
         'DocTitle',
         fontName='Helvetica-Bold',
-        fontSize=24,
-        leading=28,
+        fontSize=23,
+        leading=27,
         textColor=PRIMARY,
-        spaceAfter=6
+        spaceAfter=5
     )
 
     subtitle_style = ParagraphStyle(
         'DocSubTitle',
         fontName='Helvetica',
-        fontSize=12,
-        leading=16,
+        fontSize=11.5,
+        leading=15.5,
         textColor=ACCENT,
-        spaceAfter=15
+        spaceAfter=12
     )
 
     h1_style = ParagraphStyle(
         'Heading1_Custom',
         fontName='Helvetica-Bold',
-        fontSize=14,
-        leading=18,
+        fontSize=13,
+        leading=17,
         textColor=PRIMARY,
-        spaceBefore=14,
-        spaceAfter=8,
+        spaceBefore=12,
+        spaceAfter=6,
         keepWithNext=True
     )
 
     h2_style = ParagraphStyle(
         'Heading2_Custom',
         fontName='Helvetica-Bold',
-        fontSize=11,
-        leading=15,
+        fontSize=10.5,
+        leading=14,
         textColor=ACCENT,
-        spaceBefore=10,
-        spaceAfter=4,
+        spaceBefore=8,
+        spaceAfter=3,
         keepWithNext=True
     )
 
     body_style = ParagraphStyle(
         'Body_Custom',
         fontName='Helvetica',
-        fontSize=9.5,
-        leading=14,
+        fontSize=9,
+        leading=13.5,
         textColor=DARK,
-        spaceAfter=6
+        spaceAfter=5
     )
 
     body_bold = ParagraphStyle(
         'Body_Bold',
         fontName='Helvetica-Bold',
-        fontSize=9.5,
-        leading=14,
+        fontSize=9,
+        leading=13.5,
         textColor=DARK,
-        spaceAfter=6
+        spaceAfter=4
     )
 
     bullet_style = ParagraphStyle(
         'Bullet_Custom',
         fontName='Helvetica',
-        fontSize=9,
-        leading=13.5,
+        fontSize=8.5,
+        leading=12.5,
         textColor=DARK,
-        leftIndent=12,
-        spaceAfter=4
+        leftIndent=10,
+        spaceAfter=3
     )
 
     callout_style = ParagraphStyle(
         'Callout_Text',
         fontName='Helvetica',
-        fontSize=9,
-        leading=13.5,
+        fontSize=8.5,
+        leading=12.5,
         textColor=PRIMARY
     )
 
     table_header_style = ParagraphStyle(
         'TableHeader',
         fontName='Helvetica-Bold',
-        fontSize=9.5,
-        leading=12,
+        fontSize=9,
+        leading=11.5,
         textColor=colors.white,
         alignment=1
     )
@@ -165,16 +166,16 @@ def generate_proposal_pdf():
     table_body_style = ParagraphStyle(
         'TableBody',
         fontName='Helvetica',
-        fontSize=8.5,
-        leading=12,
+        fontSize=8,
+        leading=11.5,
         textColor=DARK
     )
 
     table_price_style = ParagraphStyle(
         'TablePrice',
         fontName='Helvetica-Bold',
-        fontSize=11,
-        leading=14,
+        fontSize=10,
+        leading=13.5,
         textColor=PRIMARY,
         alignment=1
     )
@@ -204,7 +205,7 @@ def generate_proposal_pdf():
         ('TOPPADDING', (0,0), (-1,-1), 0),
     ]))
     story.append(meta_table)
-    story.append(HRFlowable(width="100%", thickness=1.5, color=ACCENT, spaceBefore=4, spaceAfter=12))
+    story.append(HRFlowable(width="100%", thickness=1.5, color=ACCENT, spaceBefore=2, spaceAfter=10))
 
     # Identificação das Partes
     client_box_data = [
@@ -232,13 +233,13 @@ def generate_proposal_pdf():
         ('BACKGROUND', (0,0), (-1,-1), ACCENT_LIGHT),
         ('BOX', (0,0), (-1,-1), 1, BORDER),
         ('INNERGRID', (0,0), (-1,-1), 0.5, BORDER),
-        ('TOPPADDING', (0,0), (-1,-1), 7),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 7),
-        ('LEFTPADDING', (0,0), (-1,-1), 10),
-        ('RIGHTPADDING', (0,0), (-1,-1), 10),
+        ('TOPPADDING', (0,0), (-1,-1), 6),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 6),
+        ('LEFTPADDING', (0,0), (-1,-1), 9),
+        ('RIGHTPADDING', (0,0), (-1,-1), 9),
     ]))
     story.append(client_table)
-    story.append(Spacer(1, 10))
+    story.append(Spacer(1, 8))
 
     # ============================================================
     # 2. DIAGNÓSTICO & OBJETIVOS ESTRATÉGICOS
@@ -257,7 +258,7 @@ def generate_proposal_pdf():
         "receba casos previdenciários altamente qualificados no WhatsApp, economizando tempo de atendimento e eliminando custos desnecessários.",
         body_style
     ))
-    story.append(Spacer(1, 8))
+    story.append(Spacer(1, 6))
 
     # ============================================================
     # 3. ESCOPO DO PROJETO TÉCNICO
@@ -280,7 +281,6 @@ def generate_proposal_pdf():
     for title, desc in scope_items:
         story.append(Paragraph(f"• <b>{title}</b>", body_bold))
         story.append(Paragraph(f"{desc}", bullet_style))
-        story.append(Spacer(1, 3))
 
     story.append(Spacer(1, 6))
 
@@ -289,7 +289,7 @@ def generate_proposal_pdf():
     # ============================================================
     bonus_box_data = [
         [
-            Paragraph("<b>★ BÔNUS EXCLUSIVO INCLUSO: MIGRAÇÃO COMPLETA & ELIMINAÇÃO DA KINGHOST</b>", ParagraphStyle('BonusTitle', fontName='Helvetica-Bold', fontSize=10, leading=14, textColor=SUCCESS_TXT))
+            Paragraph("<b>★ BÔNUS EXCLUSIVO INCLUSO: MIGRAÇÃO COMPLETA & ELIMINAÇÃO DA KINGHOST</b>", ParagraphStyle('BonusTitle', fontName='Helvetica-Bold', fontSize=9.5, leading=13, textColor=SUCCESS_TXT))
         ],
         [
             Paragraph(
@@ -305,18 +305,18 @@ def generate_proposal_pdf():
     bonus_table = Table(bonus_box_data, colWidths=[17.4*cm])
     bonus_table.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,-1), SUCCESS_BG),
-        ('BOX', (0,0), (-1,-1), 1.5, colors.HexColor("#72B08B")),
-        ('TOPPADDING', (0,0), (-1,-1), 8),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 8),
-        ('LEFTPADDING', (0,0), (-1,-1), 12),
-        ('RIGHTPADDING', (0,0), (-1,-1), 12),
+        ('BOX', (0,0), (-1,-1), 1.2, colors.HexColor("#72B08B")),
+        ('TOPPADDING', (0,0), (-1,-1), 6),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 6),
+        ('LEFTPADDING', (0,0), (-1,-1), 10),
+        ('RIGHTPADDING', (0,0), (-1,-1), 10),
     ]))
     story.append(bonus_table)
 
     story.append(PageBreak())
 
     # ============================================================
-    # 5. ESTRATÉGIA DE GOOGLE ADS (AQUISIÇÃO ATIVA)
+    # 5. ESTRATÉGIA DE GOOGLE ADS (AQUISIÇÃO ATIVA) & INVESTIMENTO
     # ============================================================
     story.append(Paragraph("3. Estratégia de Tráfego Pago no Google Ads", h1_style))
     story.append(Paragraph(
@@ -328,23 +328,48 @@ def generate_proposal_pdf():
     ads_points = [
         ("Palavras-Chave de Fundo de Funil (Alta Intenção):", "Anúncios específicos para buscas como <i>'advogado especialista em BPC LOAS Goiânia'</i>, <i>'aposentadoria indeferida pelo INSS'</i>, <i>'auxílio-doença cortado'</i>."),
         ("Negativação Rigorosa Anti-Curiosos:", "Bloqueio de termos como <i>'endereço do INSS'</i>, <i>'agendamento gratuito'</i>, <i>'tabela inss'</i>, garantindo que a verba seja gasta apenas com quem busca contratação."),
-        ("Investimento em Anúncios:", "Recomendação de R$ 30,00 a R$ 50,00 por dia (verba paga diretamente pela Contratante ao Google, com total transparência e sem intermediação).")
     ]
     for p_title, p_desc in ads_points:
         story.append(Paragraph(f"• <b>{p_title}</b> {p_desc}", bullet_style))
 
-    story.append(Spacer(1, 10))
+    story.append(Spacer(1, 4))
+
+    # Box com reforço do investimento do Google Ads
+    ads_budget_box = [
+        [
+            Paragraph("<b>💰 REFORÇO IMPORTANTE: VERBA DE ANÚNCIOS NO GOOGLE ADS</b>", ParagraphStyle('AdsBudgetTitle', fontName='Helvetica-Bold', fontSize=9, leading=12, textColor=INFO_TXT))
+        ],
+        [
+            Paragraph(
+                "• <b>Investimento Diário Recomendado:</b> <b>R$ 25,00 a R$ 50,00 por dia</b> (equivalente a R$ 750 a R$ 1.500/mês).<br/>"
+                "• <b>Pagamento 100% Direto à Plataforma:</b> O valor dos anúncios é pago <b>diretamente ao Google Ads</b> pela Contratante (via cartão de crédito ou boleto bancário do escritório), sem taxas ou intermediários.<br/>"
+                "• <b>Controle Total:</b> A Dra. Lorena tem acesso em tempo real aos relatórios de gastos e pode pausar ou ajustar a verba quando desejar.",
+                callout_style
+            )
+        ]
+    ]
+    ads_budget_table = Table(ads_budget_box, colWidths=[17.4*cm])
+    ads_budget_table.setStyle(TableStyle([
+        ('BACKGROUND', (0,0), (-1,-1), INFO_BG),
+        ('BOX', (0,0), (-1,-1), 1.2, colors.HexColor("#7DA8C9")),
+        ('TOPPADDING', (0,0), (-1,-1), 6),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 6),
+        ('LEFTPADDING', (0,0), (-1,-1), 10),
+        ('RIGHTPADDING', (0,0), (-1,-1), 10),
+    ]))
+    story.append(ads_budget_table)
+    story.append(Spacer(1, 8))
 
     # ============================================================
     # 6. PLANOS DE INVESTIMENTO & CONDIÇÕES COMERCIAIS
     # ============================================================
     story.append(Paragraph("4. Opções de Investimento & Condições Comerciais", h1_style))
-    story.append(Paragraph("Apresentamos duas opções transparentes para deliberação da equipe do escritório:", body_style))
+    story.append(Paragraph("Apresentamos duas opções transparentes e flexíveis para deliberação da equipe do escritório:", body_style))
 
     plans_data = [
         [
-            Paragraph("<b>OPÇÃO 1: SETUP ESTRUTURAL</b><br/><font size='7.5'>ESTRUTURA & SITE NO AR</font>", table_header_style),
-            Paragraph("<b>OPÇÃO 2: MÁQUINA DE CLIENTES (RECOMENDADA)</b><br/><font size='7.5'>SETUP + GESTÃO MENSAL DE TRÁFEGO</font>", table_header_style)
+            Paragraph("<b>OPÇÃO 1: SETUP ESTRUTURAL</b><br/><font size='7'>ESTRUTURA & SITE NO AR</font>", table_header_style),
+            Paragraph("<b>OPÇÃO 2: MÁQUINA DE CLIENTES (RECOMENDADA)</b><br/><font size='7'>SETUP + GESTÃO MENSAL DE TRÁFEGO</font>", table_header_style)
         ],
         [
             Paragraph(
@@ -360,18 +385,30 @@ def generate_proposal_pdf():
             ),
             Paragraph(
                 "• <b>Tudo incluso na Opção 1 (Site + Triagem + E-mails)</b><br/>"
-                "• Criação e Gestão Estratégica de Campanhas Google Ads<br/>"
+                "• Criação e Gestão Estratégica no Google Ads<br/>"
                 "• Negativação semanal de termos e curiosos<br/>"
                 "• Otimização contínua de conversão de anúncios<br/>"
-                "• Ajustes de palavras-chave conforme novas demandas<br/>"
+                "• Ajustes de palavras-chave por demanda<br/>"
                 "• Relatório mensal de leads qualificados gerados<br/>"
                 "• Suporte contínuo de tecnologia e inteligência",
                 table_body_style
             )
         ],
         [
-            Paragraph("<b>INVESTIMENTO:</b><br/><b>R$ 2.500,00</b> à vista<br/><font size='8' color='#555555'>ou 3x de R$ 833,33 sem juros</font>", table_price_style),
-            Paragraph("<b>INVESTIMENTO:</b><br/><b>Setup: R$ 2.000,00</b> (em até 3x)<br/><b>+ Gestão: R$ 1.200,00 / mês</b>", table_price_style)
+            Paragraph(
+                "<b>INVESTIMENTO TOTAL:</b><br/>"
+                "<b>R$ 2.500,00</b><br/>"
+                "<font size='7.5' color='#1E5E3A'><b>50% de entrada (R$ 1.250,00)</b></font><br/>"
+                "<font size='7.5' color='#555555'>+ Saldo em até <b>2x no PIX</b> (R$ 625,00)</font>",
+                table_price_style
+            ),
+            Paragraph(
+                "<b>INVESTIMENTO SETUP:</b> <b>R$ 2.000,00</b><br/>"
+                "<font size='7.5' color='#1E5E3A'><b>50% de entrada (R$ 1.000,00)</b> + até <b>2x no PIX</b> (R$ 500,00)</font><br/>"
+                "<b>+ GESTÃO MENSAL TRÁFEGO:</b> <b>R$ 1.200,00 / mês</b><br/>"
+                "<font size='7' color='#555555'><i>(Verba de R$ 25 a R$ 50/dia paga direto ao Google Ads)</i></font>",
+                table_price_style
+            )
         ]
     ]
 
@@ -385,14 +422,14 @@ def generate_proposal_pdf():
         ('BACKGROUND', (1,2), (1,2), colors.HexColor("#EAE3D2")),
         ('BOX', (0,0), (-1,-1), 1, BORDER),
         ('INNERGRID', (0,0), (-1,-1), 0.5, BORDER),
-        ('TOPPADDING', (0,0), (-1,-1), 8),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 8),
-        ('LEFTPADDING', (0,0), (-1,-1), 10),
-        ('RIGHTPADDING', (0,0), (-1,-1), 10),
+        ('TOPPADDING', (0,0), (-1,-1), 6),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 6),
+        ('LEFTPADDING', (0,0), (-1,-1), 8),
+        ('RIGHTPADDING', (0,0), (-1,-1), 8),
         ('ALIGN', (0,2), (-1,2), 'CENTER'),
     ]))
     story.append(plans_table)
-    story.append(Spacer(1, 12))
+    story.append(Spacer(1, 8))
 
     # ============================================================
     # 7. CRONOGRAMA DE IMPLEMENTAÇÃO & APROVAÇÃO
@@ -414,13 +451,13 @@ def generate_proposal_pdf():
         ('BACKGROUND', (0,0), (-1,-1), colors.HexColor("#FAFAFA")),
         ('BOX', (0,0), (-1,-1), 0.5, BORDER),
         ('INNERGRID', (0,0), (-1,-1), 0.5, BORDER),
-        ('TOPPADDING', (0,0), (-1,-1), 6),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 6),
-        ('LEFTPADDING', (0,0), (-1,-1), 8),
-        ('RIGHTPADDING', (0,0), (-1,-1), 8),
+        ('TOPPADDING', (0,0), (-1,-1), 5),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 5),
+        ('LEFTPADDING', (0,0), (-1,-1), 7),
+        ('RIGHTPADDING', (0,0), (-1,-1), 7),
     ]))
     story.append(timeline_table)
-    story.append(Spacer(1, 14))
+    story.append(Spacer(1, 10))
 
     # ============================================================
     # 8. ASSINATURAS E ACEITE
@@ -430,12 +467,12 @@ def generate_proposal_pdf():
         "Para darmos início ao desenvolvimento e à migração do domínio, basta confirmar a opção escolhida via WhatsApp.",
         body_style
     ))
-    story.append(Spacer(1, 15))
+    story.append(Spacer(1, 12))
 
     sign_data = [
         [
-            Paragraph("____________________________________________<br/><b>ROGÉRIO ALCÂNTARA</b><br/>Consultor em Tecnologia & Estratégia Digital", ParagraphStyle('Sign1', fontName='Helvetica', fontSize=8.5, leading=12, alignment=1)),
-            Paragraph("____________________________________________<br/><b>DRA. LORENA CRISTINA ARAÚJO RIOS</b><br/>Essencial Assessoria Jurídica e Consultoria", ParagraphStyle('Sign2', fontName='Helvetica', fontSize=8.5, leading=12, alignment=1))
+            Paragraph("____________________________________________<br/><b>ROGÉRIO ALCÂNTARA</b><br/>Consultor em Tecnologia & Estratégia Digital", ParagraphStyle('Sign1', fontName='Helvetica', fontSize=8, leading=11, alignment=1)),
+            Paragraph("____________________________________________<br/><b>DRA. LORENA CRISTINA ARAÚJO RIOS</b><br/>Essencial Assessoria Jurídica e Consultoria", ParagraphStyle('Sign2', fontName='Helvetica', fontSize=8, leading=11, alignment=1))
         ]
     ]
     sign_table = Table(sign_data, colWidths=[8.7*cm, 8.7*cm])

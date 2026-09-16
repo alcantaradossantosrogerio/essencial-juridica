@@ -423,12 +423,17 @@ export default function ApresentacaoPipeline() {
                 <span className="text-xs font-bold text-neutral-400 uppercase tracking-wider">OPÇÃO 1</span>
                 <h3 className="text-2xl font-serif text-white">Setup Funil Previdenciário</h3>
                 <p className="text-xs text-neutral-400">Estrutura completa no ar pronta para uso.</p>
-                <div className="text-2xl font-bold text-[#C8AA82]">R$ 2.500 <span className="text-xs font-normal text-neutral-400">à vista ou 3x</span></div>
-                <ul className="space-y-2 text-xs text-neutral-300">
+                <div className="space-y-1">
+                  <div className="text-2xl font-bold text-[#C8AA82]">R$ 2.500,00</div>
+                  <div className="text-xs text-emerald-400 font-medium">50% de entrada (R$ 1.250,00)</div>
+                  <div className="text-xs text-neutral-400">+ Saldo em até 2x no PIX (R$ 625,00)</div>
+                </div>
+                <ul className="space-y-2 text-xs text-neutral-300 pt-2 border-t border-white/5">
                   <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-[#C8AA82]" /> Nova Landing Page Essencial ultrarrápida</li>
                   <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-[#C8AA82]" /> Módulo de Triagem IA integrado ao WhatsApp</li>
                   <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-[#C8AA82]" /> Ficha de Atendimento automatizada</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-[#C8AA82]" /> Eliminação da mensalidade pesada da KingHost</li>
+                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-[#C8AA82]" /> <b>Migração e desligamento da KingHost</b></li>
+                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-[#C8AA82]" /> Preservação dos 4 e-mails institucionais</li>
                 </ul>
               </div>
 
@@ -440,9 +445,13 @@ export default function ApresentacaoPipeline() {
                 <span className="text-xs font-bold text-[#C8AA82] uppercase tracking-wider">OPÇÃO 2</span>
                 <h3 className="text-2xl font-serif text-white">Máquina de Clientes Contínua</h3>
                 <p className="text-xs text-neutral-300">Setup Completo + Gestão Mensal do Google Ads.</p>
-                <div className="text-2xl font-bold text-[#C8AA82]">Setup R$ 2.000 + R$ 1.200/mês</div>
-                <ul className="space-y-2 text-xs text-neutral-200">
-                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-[#C8AA82]" /> Tudo do Setup Completo (Site + Triagem IA)</li>
+                <div className="space-y-1">
+                  <div className="text-2xl font-bold text-[#C8AA82]">Setup R$ 2.000 + R$ 1.200/mês</div>
+                  <div className="text-xs text-emerald-400 font-medium">Setup: 50% entrada (R$ 1.000) + até 2x PIX (R$ 500)</div>
+                  <div className="text-xs text-neutral-300"><i>Verba Google: R$ 25 a R$ 50/dia paga direto à plataforma</i></div>
+                </div>
+                <ul className="space-y-2 text-xs text-neutral-200 pt-2 border-t border-white/5">
+                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-[#C8AA82]" /> Tudo do Setup Completo (Site + Triagem IA + E-mails)</li>
                   <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-[#C8AA82]" /> Gestão e otimização semanal de Google Ads</li>
                   <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-[#C8AA82]" /> Negativação constante de curiosos</li>
                   <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-[#C8AA82]" /> Relatório mensal de leads qualificados gerados</li>
