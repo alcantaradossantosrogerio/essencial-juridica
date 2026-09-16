@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { usePrevidenciarioModal } from '../context/PrevidenciarioModalContext';
 import { extraConfig } from '../config';
+import { leadService } from '../services/leadService';
 
 interface FormData {
   benefitType: string;
@@ -112,6 +113,7 @@ export default function PrevidenciarioModal() {
   const { isOpen, closeModal } = usePrevidenciarioModal();
   const [step, setStep] = useState<number>(1);
   const [form, setForm] = useState<FormData>(initialForm);
+  const [currentLeadId, setCurrentLeadId] = useState<string>('');
   const [isAnalyzing, setIsAnalyzing] = useState<boolean>(false);
 
   // Fecha o modal ao pressionar tecla ESC
@@ -131,16 +133,52 @@ export default function PrevidenciarioModal() {
     };
   }, [isOpen, closeModal]);
 
-  if (!isOpen) return null;
-
   const handleSelectBenefit = (id: string) => {
-    setForm({ ...form, benefitType: id });
+    const updated = { ...form, benefitType: id };
+    setForm(updated);
     setStep(2);
+
+    // Auto-save do lead
+    const saved = leadService.saveOrUpdateLead({
+      id: currentLeadId || undefined,
+      benefitType: id,
+      currentStep: 2,
+      status: 'abandono_etapa',
+    });
+    if (!currentLeadId) setCurrentLeadId(saved.id);
   };
 
   const handleSelectStatus = (id: string) => {
-    setForm({ ...form, inssStatus: id });
+    const updated = { ...form, inssStatus: id };
+    setForm(updated);
     setStep(3);
+
+    // Auto-save do lead
+    const saved = leadService.saveOrUpdateLead({
+      id: currentLeadId || undefined,
+      benefitType: form.benefitType,
+      inssStatus: id,
+      currentStep: 3,
+      status: 'abandono_etapa',
+    });
+    if (!currentLeadId) setCurrentLeadId(saved.id);
+  };
+
+  const handleAdvanceToContact = () => {
+    setStep(4);
+    // Auto-save do lead com dados da etapa 3
+    leadService.saveOrUpdateLead({
+      id: currentLeadId || undefined,
+      benefitType: form.benefitType,
+      inssStatus: form.inssStatus,
+      age: form.age,
+      contributionTime: form.contributionTime,
+      hasMedicalReport: form.hasMedicalReport,
+      incomePerPerson: form.incomePerPerson,
+      city: form.city,
+      currentStep: 4,
+      status: 'abandono_etapa',
+    });
   };
 
   const handleRunAnalysis = (e: React.FormEvent) => {
@@ -150,12 +188,36 @@ export default function PrevidenciarioModal() {
       return;
     }
 
+    // Salva o lead com dados completos de contato
+    const saved = leadService.saveOrUpdateLead({
+      id: currentLeadId || undefined,
+      fullName: form.fullName,
+      whatsapp: form.whatsapp,
+      city: form.city,
+      benefitType: form.benefitType,
+      inssStatus: form.inssStatus,
+      age: form.age,
+      contributionTime: form.contributionTime,
+      hasMedicalReport: form.hasMedicalReport,
+      incomePerPerson: form.incomePerPerson,
+      currentStep: 5,
+      status: 'qualificado_alto',
+    });
+    if (!currentLeadId) setCurrentLeadId(saved.id);
+
     setIsAnalyzing(true);
     setStep(5);
 
     setTimeout(() => {
       setIsAnalyzing(false);
     }, 1500);
+  };
+
+  const handleSendWhatsApp = () => {
+    if (currentLeadId) {
+      leadService.markAsSentToWhatsApp(currentLeadId);
+    }
+    closeModal();
   };
 
   const getBenefitName = (id: string) => {
@@ -460,7 +522,7 @@ export default function PrevidenciarioModal() {
 
               <div className="pt-2 flex justify-end">
                 <button
-                  onClick={() => setStep(4)}
+                  onClick={handleAdvanceToContact}
                   className="bg-[#C8AA82] hover:bg-white text-black font-semibold text-xs uppercase tracking-wider px-6 py-3 rounded-lg flex items-center gap-2 transition-all duration-200 cursor-pointer"
                 >
                   Continuar <ArrowRight className="w-3.5 h-3.5" />
@@ -610,7 +672,7 @@ export default function PrevidenciarioModal() {
                       href={`https://wa.me/556283143967?text=${generateWhatsAppMessage()}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={closeModal}
+                      onClick={handleSendWhatsApp}
                       className="w-full sm:w-auto bg-[#25D366] hover:bg-[#20bd5a] text-black font-bold text-xs uppercase tracking-wider px-7 py-3.5 rounded-lg flex items-center justify-center gap-2 shadow-xl transition-all duration-300 hover:scale-[1.02]"
                     >
                       <MessageCircle className="w-4 h-4 text-black fill-black" />

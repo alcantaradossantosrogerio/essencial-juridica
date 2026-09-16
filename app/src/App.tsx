@@ -10,6 +10,7 @@ import ContactForm from './sections/ContactForm';
 import Footer from './sections/Footer';
 import CapabilityDetail from './sections/CapabilityDetail';
 import ApresentacaoPipeline from './sections/ApresentacaoPipeline';
+import LeadsDashboard from './sections/LeadsDashboard';
 import WhatsAppButton from './components/WhatsAppButton';
 import PrevidenciarioModal from './components/PrevidenciarioModal';
 import { PrevidenciarioModalProvider } from './context/PrevidenciarioModalContext';
@@ -50,6 +51,8 @@ export default function App() {
         <Route path="/capability/:slug" element={<CapabilityDetail />} />
         <Route path="/apresentacao" element={<ApresentacaoPipeline />} />
         <Route path="/proposta" element={<ApresentacaoPipeline />} />
+        <Route path="/leads" element={<LeadsDashboard />} />
+        <Route path="/admin" element={<LeadsDashboard />} />
       </Routes>
       <PrevidenciarioModal />
     </PrevidenciarioModalProvider>

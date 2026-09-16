@@ -319,13 +319,21 @@ export default function ApresentacaoPipeline() {
                 <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed">
                   Quando o visitante clica no WhatsApp para tirar dúvidas, o sistema abre a triagem de 4 cliques. Ao concluir, gera a ficha e abre a conversa da Dra. Lorena com tudo preenchido.
                 </p>
-                <div className="pt-2">
+                <div className="pt-2 flex flex-wrap items-center gap-3">
                   <button
                     onClick={openModal}
                     className="bg-[#25D366] hover:bg-[#20bd5a] text-black font-bold uppercase text-xs tracking-wider px-6 py-3.5 rounded-lg flex items-center gap-2 shadow-xl transition-all cursor-pointer"
                   >
-                    <Send className="w-4 h-4 text-black fill-black" /> Testar Triagem Ao Vivo Agora
+                    <Send className="w-4 h-4 text-black fill-black" /> Testar Triagem Ao Vivo
                   </button>
+                  <a
+                    href="/leads"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white/10 hover:bg-[#C8AA82] hover:text-black text-white font-semibold uppercase text-xs tracking-wider px-5 py-3.5 rounded-lg flex items-center gap-2 border border-white/15 transition-all"
+                  >
+                    <ExternalLink className="w-4 h-4" /> Painel de Requalificação
+                  </a>
                 </div>
               </div>
 
