@@ -83,20 +83,20 @@ export default function Hero() {
 
         {/* Hero CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center w-full sm:w-auto">
+          <button
+            onClick={() => document.querySelector('#triagem-previdenciaria')?.scrollIntoView({ behavior: 'smooth' })}
+            className="bg-gradient-to-r from-[#C8AA82] to-[#e4ccaa] text-black font-bold uppercase tracking-wider text-xs px-7 py-4 rounded-sm hover:from-white hover:to-white hover:scale-[1.03] transition-all duration-300 shadow-xl text-center w-full sm:w-auto sm:min-w-[220px] flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <span>⚖️ Triagem Previdenciária IA</span>
+          </button>
           <a
             href={extraConfig.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#C8AA82] text-black font-semibold uppercase tracking-wider text-xs px-6 py-3.5 rounded-sm hover:bg-white hover:scale-[1.03] transition-all duration-300 shadow-lg text-center w-full sm:w-auto sm:min-w-[180px]"
+            className="border border-[#C8AA82]/40 text-neutral-200 hover:border-[#C8AA82] hover:text-[#C8AA82] hover:bg-[#C8AA82]/5 font-semibold uppercase tracking-wider text-xs px-6 py-4 rounded-sm transition-all text-center w-full sm:w-auto sm:min-w-[180px]"
           >
             {heroConfig.ctaText}
           </a>
-          <button
-            onClick={() => document.querySelector('#curriculum')?.scrollIntoView({ behavior: 'smooth' })}
-            className="border border-white/20 text-white hover:border-[#C8AA82] hover:text-[#C8AA82] font-semibold uppercase tracking-wider text-xs px-6 py-3.5 rounded-sm transition-colors text-center w-full sm:w-auto sm:min-w-[180px]"
-          >
-            Nossa Atuação
-          </button>
         </div>
       </div>
     </section>

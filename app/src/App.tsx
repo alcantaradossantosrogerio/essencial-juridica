@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Navigation from './sections/Navigation';
 import Hero from './sections/Hero';
+import PrevidenciarioQualifier from './sections/PrevidenciarioQualifier';
 import Curriculum from './sections/Curriculum';
 import Method from './sections/Method';
 import CinematicVision from './sections/CinematicVision';
@@ -24,6 +25,7 @@ function HomePage() {
 
       <main>
         <Hero />
+        <PrevidenciarioQualifier />
         <Curriculum />
         <Method />
         <CinematicVision />

@@ -24,14 +24,14 @@ export interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
   language: "pt-BR",
-  brandName: "Mariana Trípode Advocacia",
-  logoUrl: "https://marianatripode.adv.br/wp-content/uploads/2021/12/LOGO-VETORIZADO-04-1024x492.png",
+  brandName: "Essencial Advocacia",
+  logoUrl: "",
   headerContact: {
     phone: "(62) 3921-3933",
-    phoneHref: "tel:06199392-0988",
-    email: "",
-    emailHref: "",
-    address: "Jardim Novo Mundo - Goiânia/GO",
+    phoneHref: "tel:06239213933",
+    email: "contato@essencialajc.com.br",
+    emailHref: "mailto:contato@essencialajc.com.br",
+    address: "Goiânia - GO | Atendimento em todo o Brasil",
     addressHref: "https://goo.gl/maps/cWWaeRW2YavVtXbA8",
   },
   socials: {
@@ -58,16 +58,14 @@ export interface NavigationConfig {
 
 export const navigationConfig: NavigationConfig = {
   links: [
-    { label: "Home", href: "#hero" },
-    { label: "O Escritório", href: "#cinematic" },
+    { label: "Início", href: "#hero" },
+    { label: "Triagem Previdenciária IA", href: "#triagem-previdenciaria" },
     { label: "Áreas de Atuação", href: "#curriculum" },
-    { label: "Aulas e Palestras", href: "#testimonials" },
-    { label: "Na Mídia", href: "#alumni" },
-    { label: "E-books", href: "#alumni" },
-    { label: "Blog", href: "#alumni" },
+    { label: "O Método", href: "#method" },
+    { label: "O Escritório", href: "#cinematic" },
     { label: "Contato", href: "#contact" },
   ],
-  ctaText: "Fale Conosco",
+  ctaText: "Agendar Análise",
 };
 
 // ============================================================
@@ -83,9 +81,9 @@ export interface HeroConfig {
 
 export const heroConfig: HeroConfig = {
   title: "Essencial",
-  subtitleLine1: "Consultoria jurídica em Goiânia com atendimento humano, estratégico e personalizado.",
-  subtitleLine2: "Segurança jurídica para você e sua empresa.",
-  ctaText: "Agende uma consulta",
+  subtitleLine1: "Assessoria Jurídica e Consultoria com excelência técnica, agilidade e atendimento estratégico.",
+  subtitleLine2: "Especialistas em Direito Previdenciário, Aposentadorias, BPC/LOAS e Defesa do Cidadão.",
+  ctaText: "Falar no WhatsApp",
 };
 
 // ============================================================
@@ -108,7 +106,14 @@ export const capabilitiesConfig: CapabilitiesConfig = {
   sectionLabel: "Áreas de Atuação",
   items: [
     {
-      title: "Direito Civil",
+      title: "Direito Previdenciário",
+      slug: "direito-previdenciario",
+      description:
+        "Aposentadorias por idade e tempo, BPC/LOAS para idosos e pessoas com deficiência, auxílio por incapacidade, reversão de indeferimentos do INSS e planejamento previdenciário completo.",
+      image: "/images/direito-civil.png",
+    },
+    {
+      title: "Direito Civil & Contratos",
       slug: "direito-civil",
       description:
         "Contratos, responsabilidade civil, indenizações e cobranças. Atuação preventiva e contenciosa para proteger seus direitos e seu patrimônio em qualquer situação.",
@@ -118,7 +123,7 @@ export const capabilitiesConfig: CapabilitiesConfig = {
       title: "Direito Trabalhista",
       slug: "direito-trabalhista",
       description:
-        "Defesa de empregados e empresas em reclamações trabalhistas, acordos, verbas rescisórias e assessoria preventiva em relações de trabalho.",
+        "Defesa de direitos trabalhistas, rescisões indiretas, horas extras, acidentes de trabalho e assessoria preventiva especializada.",
       image: "/images/direito-trabalhista.png",
     },
     {
@@ -127,13 +132,6 @@ export const capabilitiesConfig: CapabilitiesConfig = {
       description:
         "Divórcio, guarda, pensão alimentícia, inventário e planejamento sucessório, conduzidos com sensibilidade, discrição e foco na melhor solução.",
       image: "/images/direito-familia.png",
-    },
-    {
-      title: "Direito Empresarial",
-      slug: "direito-empresarial",
-      description:
-        "Constituição de empresas, contratos comerciais, societário e consultoria contínua para o crescimento seguro do seu negócio.",
-      image: "/images/direito-empresarial.png",
     },
   ],
 };
